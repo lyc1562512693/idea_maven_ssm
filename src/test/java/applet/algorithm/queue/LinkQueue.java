@@ -8,24 +8,21 @@ import applet.algorithm.link.Node;
 public class LinkQueue {
     private Node head = null;
     private Node tail = null;
-    private int count = 0;//队列已有元素个数
-    private int n = 0;//队列容量
 
-    public LinkQueue(int n){//定义链表的长度
-        this.n = n;
-    }
 
     /**
      * 出队
      * @return
      */
     public String pull(){
-        if(head == tail){
+        if(head == null){
             return null;
         }
         String value = head.getValue().toString();
         head = head.next;
-        count--;
+        if(head == null){
+            tail = null;
+        }
         return value;
     }
 
@@ -35,12 +32,14 @@ public class LinkQueue {
      * @return
      */
     public boolean push(String value){
-        if(count == n){
-            return false;
+        Node newNode = new Node(value);
+        if(head == null){
+            head = newNode;
+            tail = newNode;
+        }else {
+            tail.next = newNode;
+            tail = tail.next;
         }
-        tail.next = new Node(value);
-        tail = tail.next;
-        count++;
         return true;
     }
 

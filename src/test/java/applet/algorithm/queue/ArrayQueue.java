@@ -6,9 +6,9 @@ public class ArrayQueue {
     private int head = 0;
     private int tail = 0;
 
-    public ArrayQueue(int length){
-        this.items = new String[length];
-        this.n = length;
+    public ArrayQueue(int n){
+        this.items = new String[n];
+        this.n = n;
     }
 
     /**
@@ -45,8 +45,8 @@ public class ArrayQueue {
             if(head == 0){
                 return false;
             }
-            for(int i = head; i< tail;i++){
-                items[i-head] = items[i];
+            for(int i = 0; i< tail - head;i++){
+                items[i] = items[i + head];
             }
             tail-=head;
             head = 0;

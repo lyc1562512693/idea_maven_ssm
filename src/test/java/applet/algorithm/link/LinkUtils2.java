@@ -106,7 +106,7 @@ public class LinkUtils2 {
     }
 
     /**
-     * 合并两个有序链表（假设链表是升序的）
+     * 合并两个有序链表（假设链表是升序的）-使用哨兵节点
      * @param headA
      * @param headB
      * @return
@@ -150,7 +150,7 @@ public class LinkUtils2 {
         if(head == null){
             return null;
         }
-        if(n < 0){
+        if(n < 1){
             throw new IndexOutOfBoundsException();
         }
         //再考虑删除第一个节点的特殊情况
@@ -211,7 +211,7 @@ public class LinkUtils2 {
     }
 
     /**
-     * 根据索引删除倒数第n个节点
+     * 根据索引删除倒数第n个节点-快慢指针
      * @param head
      * @param n
      * @return
@@ -222,13 +222,19 @@ public class LinkUtils2 {
         }
         Node slow = head;
         Node fast = head;
-        while(fast != null && --n > 0){
+        while(fast != null && --n > 0){//快指针先走到正数第n个节点（这个while循环的写法要记住）
             fast = fast.next;
         }
-        if(n > 0){
+        if(n > 0){//如果此时n还是大于0，那坑定是给的n太大了，超出链表长度了
             throw new IndexOutOfBoundsException();
         }
-        fast = fast.next;
+        //程序走到这里说明此时n==0
+        //判断删除的是否为倒数第length个节点（即正数第一个节点）
+        if(fast.next == null){
+            return head.next;
+        }
+        //其他情况则直接slow.next = slow.next.next;
+        fast = fast.next;//为了找到待删节点的pre节点，fast需要先往前一步
         while(fast.next != null){
             slow = slow.next;
             fast = fast.next;
@@ -237,7 +243,7 @@ public class LinkUtils2 {
         return head;
     }
     /**
-     * 返回链表的中间节点
+     * 返回链表的中间节点-快慢指针
      * @param head
      * @return
      */
@@ -246,8 +252,8 @@ public class LinkUtils2 {
             return head;
         }
         Node slow = head;
-        Node fast = head;
-        while(fast != null || fast.next != null){
+        Node fast = head.next;
+        while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }

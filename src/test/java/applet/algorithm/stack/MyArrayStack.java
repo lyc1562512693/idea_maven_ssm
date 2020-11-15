@@ -25,5 +25,7 @@ public class MyArrayStack {
             return null;
         return this.strings[--count];
     }
-
+    public int intFunc(){
+        throw new NullPointerException();
+    }
 }
