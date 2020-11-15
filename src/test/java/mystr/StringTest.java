@@ -31,7 +31,7 @@ public class StringTest {
 		System.out.println("这是本地master修改");
 		System.out.println("这是本地master第二次修改");
 		System.out.println("这是远程master第二次修改");
-		System.out.println("这是本地lyc第一一次修改");
+		System.out.println("这是本地master第二二次修改");
 	}
 	public static void count(){
 		float a = 10;
