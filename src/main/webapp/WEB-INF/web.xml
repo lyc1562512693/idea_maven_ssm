@@ -8,14 +8,24 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-mybatis.xml</param-value>
   </context-param>
-  <!-- <filter>
-      <filter-name>LoginFilter</filter-name>
+  <!--对外接口过滤器-->
+  <filter>
+    <filter-name>externalFilter</filter-name>
+    <filter-class>com.surfilter.ssm.filter.ExternalFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf8</param-value>
+    </init-param>
+  </filter>
+  <!--登录过滤器-->
+  <filter>
+      <filter-name>loginFilter</filter-name>
       <filter-class>com.surfilter.ssm.filter.LoginFilter</filter-class>
       <init-param>
           <param-name>encoding</param-name>
           <param-value>utf8</param-value>
       </init-param>
-  </filter> -->
+  </filter>
   <!-- 编码过滤器 -->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -26,10 +36,14 @@
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
-  <!-- <filter-mapping>
-      <filter-name>LoginFilter</filter-name>
-      <url-pattern>/*</url-pattern>
-  </filter-mapping> -->
+  <filter-mapping>
+    <filter-name>externalFilter</filter-name>
+    <url-pattern>/sm/insertSmUser.action</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+      <filter-name>loginFilter</filter-name>
+      <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -61,6 +75,7 @@
     <url-pattern>*.action</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
+    <welcome-file>/login.jsp</welcome-file>
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
   <display-name>Archetype Created Web Application</display-name>

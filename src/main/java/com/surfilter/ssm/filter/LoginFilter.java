@@ -28,16 +28,12 @@ public class LoginFilter implements Filter{
 		// TODO Auto-generated method stub
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        HttpSession session = request.getSession();
-        //判断Session中是否有登录用户信息
-        String toke = (String) session.getAttribute(CommentConstant.LONGIN_TOKE);
-        if(!toke.isEmpty()){
-            chain.doFilter(req, res);
-        }else{
-            //若没有则，跳转到登录页面
-            response.sendRedirect(request.getContextPath() + "/user/toLogin");
-        }
-		
+        if(request.getServletPath().endsWith("login.jsp")){//如果就是登录页面，则不用跳转
+        	chain.doFilter(req, res);
+		}else{
+        	//若没有则，跳转到登录页面
+			response.sendRedirect(request.getContextPath() + "/login.jsp");
+		}
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
