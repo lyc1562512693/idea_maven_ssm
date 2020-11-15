@@ -29,6 +29,7 @@ public class StringTest {
 		char[] c = s1.toCharArray();
 		String[] s = lst2.toArray(new String[lst2.size()]);
 		System.out.println("这是本地master修改");
+		System.out.println("这是远程master第二次修改");
 	}
 	public static void count(){
 		float a = 10;
