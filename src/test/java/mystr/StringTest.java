@@ -1,8 +1,14 @@
 package mystr;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,7 +27,7 @@ public class StringTest {
 		if(s1.isEmpty() || s1 == null ){}//和方式二一样
 		//out();
 		regexp();
-        countMan();
+        //countMan();
         List<String> lst2 = new ArrayList<>();
 		char[] c = s1.toCharArray();
 		String[] s = lst2.toArray(new String[lst2.size()]);
