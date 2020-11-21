@@ -1,8 +1,14 @@
 package mystr;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,11 +25,12 @@ public class StringTest {
 		if("".equals(s1) || s1 == null){}
 		if(s1.length() == 0 || s1 == null){}//效率高，推荐
 		if(s1.isEmpty() || s1 == null ){}//和方式二一样
+		Objects.equals(new Object(), s1);// 推荐使用
 		int x = 123;
 		Integer.toString(x).length();
 		//out();
 		regexp();
-        countMan();
+        //countMan();
         List<String> lst2 = new ArrayList<>();
         //new ReadWriteLock();
 		char[] c = s1.toCharArray();
@@ -32,6 +39,8 @@ public class StringTest {
 		System.out.println("这是本地master第二次修改");
 		System.out.println("这是远程master第二次修改");
 		System.out.println("这是本地lyc第三三次修改，可能会冲突");
+		System.out.println("-----------------------------------------------------");
+
 	}
 	public static void count(){
 		float a = 10;
