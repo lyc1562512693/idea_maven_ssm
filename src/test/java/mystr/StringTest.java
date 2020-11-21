@@ -19,19 +19,12 @@ public class StringTest {
 		if("".equals(s1) || s1 == null){}
 		if(s1.length() == 0 || s1 == null){}//效率高，推荐
 		if(s1.isEmpty() || s1 == null ){}//和方式二一样
-		int x = 123;
-		Integer.toString(x).length();
 		//out();
 		regexp();
         countMan();
         List<String> lst2 = new ArrayList<>();
-        //new ReadWriteLock();
 		char[] c = s1.toCharArray();
 		String[] s = lst2.toArray(new String[lst2.size()]);
-		System.out.println("这是本地master修改");
-		System.out.println("这是本地master第二次修改");
-		System.out.println("这是远程master第二次修改");
-		System.out.println("这是本地lyc第三三次修改，可能会冲突");
 	}
 	public static void count(){
 		float a = 10;
