@@ -40,7 +40,7 @@ public class TopDomainUtil {
         String res2 = obj.getTopDomain(url);
         System.out.println(url + " ==> " + res2);
  
-        url = "whois.chinaz.com/reverse?ddlSearchMode=1";
+        url = "whois.chinaz.com/reverse?ddlSearchMode=1www.huya.com213www.tx.com";
         String res3 = obj.getTopDomain(url);
         System.out.println(url + " ==> " + res3);
  

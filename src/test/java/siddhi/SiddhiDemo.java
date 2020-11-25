@@ -38,7 +38,7 @@ public class SiddhiDemo {
             appRuntime.addCallback(table_name, new StreamCallback() {
                 @Override
                 public void receive(Event[] events) {
-                    // System.out.println(events[0].toString());
+                    System.out.println(events[0].toString());
                 }
             });
             InputHandler handler = appRuntime.getInputHandler(stream_name);
